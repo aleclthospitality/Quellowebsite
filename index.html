@@ -326,15 +326,21 @@
       var label = document.getElementById('notifyLabel');
       var success = document.getElementById('successMsg');
       if (input.value && input.value.indexOf('@') > 0) {
-        form.style.transition = 'opacity 0.4s';
-        form.style.opacity = '0';
-        label.style.transition = 'opacity 0.4s';
-        label.style.opacity = '0';
-        setTimeout(function() {
-          form.style.display = 'none';
-          label.style.display = 'none';
-          success.style.display = 'block';
-        }, 420);
+        fetch('https://formspree.io/f/mvzddlqg', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: input.value })
+        }).then(function() {
+          form.style.transition = 'opacity 0.4s';
+          form.style.opacity = '0';
+          label.style.transition = 'opacity 0.4s';
+          label.style.opacity = '0';
+          setTimeout(function() {
+            form.style.display = 'none';
+            label.style.display = 'none';
+            success.style.display = 'block';
+          }, 420);
+        });
       }
     }
     document.getElementById('notifyBtn').addEventListener('click', handleNotify);
