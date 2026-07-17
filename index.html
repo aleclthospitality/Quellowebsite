@@ -359,6 +359,9 @@
     .events-form .field_with_errors input, .events-form .fieldWithErrors input { border-color: rgba(214, 120, 90, 0.8) !important; }
     .events-form #tripleseat_link { display: block; margin-top: 1.6rem; text-align: center; font-family: 'EB Garamond', Georgia, serif !important; font-size: 0.58rem !important; letter-spacing: 0.15em !important; text-transform: uppercase; color: var(--cream) !important; opacity: 0.25; text-decoration: none; }
     @media (max-width: 640px) { .events-card { padding: 1.5rem 1.1rem 1.3rem; } .events-form input[type="date"], .events-form input[type="time"] { width: 100% !important; min-width: 0; } }
+    /* Page layering: frame stays on top of everything, footer slides beneath the form card */
+    .border-frame { z-index: 40; }
+    .footer { z-index: 8; }
     </style>
     <div class="events">
       <button class="events-toggle" id="eventsToggle" type="button">Private Event Inquiries</button>
