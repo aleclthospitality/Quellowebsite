@@ -330,6 +330,50 @@
       <p class="notify-label" id="notifyLabel">Be the first to know</p>
       <p class="notify-success" id="successMsg">We'll be in touch soon.</p>
     </div>
+    <!-- ===== PRIVATE EVENTS (Tripleseat) - start ===== -->
+    <style>
+    .events { margin-top: 2.2rem; width: 100%; max-width: min(600px, 90vw); display: flex; flex-direction: column; align-items: center; animation: fadeUp 2.5s 1.55s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .events-toggle { background: transparent; border: 1px solid rgba(191, 155, 90, 0.5); padding: 0.75rem 1.8rem; cursor: pointer; font-family: 'EB Garamond', Georgia, serif; font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); opacity: 0.7; transition: opacity 0.2s, border-color 0.2s, background-color 0.2s; }
+    .events-toggle:hover { opacity: 1; border-color: var(--rule); background: rgba(191, 155, 90, 0.08); }
+    .events-panel { max-height: 0; overflow: hidden; opacity: 0; width: 100%; transition: max-height 0.6s ease, opacity 0.5s ease, margin-top 0.4s ease; }
+    .events-panel.open { max-height: 3000px; opacity: 1; margin-top: 1.6rem; }
+    .events-card { border: 1px solid rgba(191, 155, 90, 0.35); padding: 1.8rem 1.5rem; text-align: left; }
+    .events-intro { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 300; font-size: 0.98rem; color: var(--cream); opacity: 0.6; line-height: 1.6; margin-bottom: 0.6rem; text-align: center; }
+    .events-form { font-family: 'Cormorant Garamond', Georgia, serif; color: var(--cream); }
+    .events-form h1, .events-form h2, .events-form h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300; font-size: 1.15rem; letter-spacing: 0.08em; color: var(--cream); margin: 0.5rem 0; }
+    .events-form label { display: block; font-family: 'EB Garamond', Georgia, serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); opacity: 0.55; margin: 1.1rem 0 0.3rem; }
+    .events-form input[type="text"], .events-form input[type="email"], .events-form input[type="tel"], .events-form input[type="number"], .events-form select, .events-form textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(244, 237, 228, 0.32); border-radius: 0; color: var(--cream); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 0.95rem; letter-spacing: 0.04em; padding: 0.35rem 0; outline: none; box-sizing: border-box; -webkit-appearance: none; appearance: none; transition: border-color 0.2s; }
+    .events-form input:focus, .events-form select:focus, .events-form textarea:focus { border-bottom-color: rgba(244, 237, 228, 0.65); }
+    .events-form ::placeholder { color: rgba(244, 237, 228, 0.3); }
+    .events-form select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23F4EDE4' fill-opacity='0.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.2rem center; padding-right: 1.2rem; }
+    .events-form select option { background: var(--teal-dark); color: var(--cream); }
+    .events-form input[type="checkbox"], .events-form input[type="radio"] { width: auto; -webkit-appearance: auto; appearance: auto; accent-color: #bf9b5a; margin-right: 0.5rem; }
+    .events-form input[type="submit"], .events-form button[type="submit"] { width: auto; margin-top: 1.6rem; background: transparent; border: 1px solid rgba(191, 155, 90, 0.55); padding: 0.7rem 2rem; font-family: 'EB Garamond', Georgia, serif; font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); cursor: pointer; opacity: 0.8; transition: opacity 0.2s, background-color 0.2s; }
+    .events-form input[type="submit"]:hover, .events-form button[type="submit"]:hover { opacity: 1; background: rgba(191, 155, 90, 0.12); }
+    .events-form .errorExplanation, .events-form .error_explanation { border: 1px solid rgba(214, 120, 90, 0.6); padding: 0.8rem 1rem; margin: 0.8rem 0; font-size: 0.9rem; }
+    .events-form .field_with_errors input, .events-form .fieldWithErrors input { border-bottom-color: rgba(214, 120, 90, 0.8); }
+    .events-form #tripleseat_link { display: block; margin-top: 1.4rem; text-align: center; font-family: 'EB Garamond', Georgia, serif; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); opacity: 0.25; text-decoration: none; }
+    </style>
+    <div class="events">
+      <button class="events-toggle" id="eventsToggle" type="button">Private Event Inquiries</button>
+      <div class="events-panel" id="eventsPanel">
+        <div class="events-card">
+          <p class="events-intro">From intimate dinners to full buyouts, we would love to host you. Share a few details below and our events team will be in touch.</p>
+          <div class="events-form">
+            <script src="https://api.tripleseat.com/ts/dynamic_leads/ts_script.js?dynamic_lead_form_id=4195&amp;public_key=0e561caff3c3c66f642cba4f20aef963c79e3ddc"></script>
+            <a id="tripleseat_link" href="https://www.tripleseat.com">Private Event Software powered by Tripleseat</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById('eventsToggle').addEventListener('click', function() {
+        var panel = document.getElementById('eventsPanel');
+        var open = panel.classList.toggle('open');
+        this.textContent = open ? 'Close' : 'Private Event Inquiries';
+      });
+    </script>
+    <!-- ===== PRIVATE EVENTS (Tripleseat) - end ===== -->
     <div class="hiring">
       <a href="https://culinaryagents.com/entities/1039809-Quello" target="_blank" rel="noopener">Interested in joining our team?</a>
     </div>
